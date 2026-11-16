@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奶手</title>
+<style type="text/css">
+html, body {
+	height: 100%;
+	margin: 0;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: #0a1418;
+	background-image: radial-gradient(circle at 50% -20%, #1d3a44 0%, #0a1418 55%);
+	color: #eaf1f3;
+	font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", Arial, sans-serif;
+	overflow: hidden;
+}
+
+/* ================= 上边栏 ================= */
+.topbar {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 30px;
+	background-color: rgba(8, 18, 23, 0.72);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.brand {
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 24px;
+	letter-spacing: 6px;
+	color: #f2f7f8;
+}
+.brand span {
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	letter-spacing: 3px;
+	color: rgba(234, 241, 243, 0.45);
+	margin-left: 10px;
+}
+.nav a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 9px 22px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background-color: rgba(255, 255, 255, 0.10);
+	color: #eaf1f3;
+	font-size: 14px;
+	text-decoration: none;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+.nav a:hover {
+	background-color: rgba(255, 255, 255, 0.24);
+	border-color: rgba(255, 255, 255, 0.4);
+}
+.nav a.primary {
+	background-color: rgba(255, 255, 255, 0.66);
+	border-color: rgba(255, 255, 255, 0.66);
+	color: #16303a;
+	font-weight: bold;
+}
+.nav a.primary:hover {
+	background-color: rgba(255, 255, 255, 0.88);
+}
+
+/* ================= 主体：左图右文 ================= */
+.main {
+	flex: 1;
+	display: flex;
+	min-height: 0;
+	padding: 28px 30px 30px 30px;
+	box-sizing: border-box;
+}
+
+/* 左边栏：图片 */
+.photo {
+	flex: 0 0 42%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background-color: #0e1c22;
+	min-width: 0;
+}
+.photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;      /* 照片裁切铺满，不拉伸变形 */
+	object-position: 50% 50%; /* 特写图已裁好，居中显示 */
+}
+.photo .tag {
+	position: absolute;
+	left: 18px;
+	bottom: 16px;
+	padding: 6px 14px;
+	border-radius: 999px;
+	background-color: rgba(255, 255, 255, 0.62);
+	color: #16303a;
+	font-size: 12px;
+	letter-spacing: 2px;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+/* 右边栏：文字区 */
+.text {
+	flex: 1;
+	min-width: 0;
+	margin-left: 26px;
+	padding: 30px 34px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.text h1 {
+	margin: 0 0 6px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 26px;
+	font-weight: normal;
+	letter-spacing: 4px;
+	color: #ffffff;
+}
+.text .sub {
+	margin: 0 0 24px 0;
+	font-size: 12px;
+	letter-spacing: 2px;
+	color: rgba(234, 241, 243, 0.45);
+}
+.text h2 {
+	margin: 26px 0 10px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 17px;
+	font-weight: normal;
+	letter-spacing: 2px;
+	color: #cfe2e7;
+	padding-left: 12px;
+	border-left: 3px solid rgba(255, 255, 255, 0.45);
+}
+.text .lead {
+	margin: 0 0 22px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 19px;
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: 3px;
+	line-height: 1.9;
+	color: #ffffff;
+	text-indent: 0;
+	padding-left: 14px;
+	border-left: 3px solid rgba(255, 255, 255, 0.5);
+}
+.text p {
+	margin: 0 0 14px 0;
+	font-size: 14px;
+	line-height: 2;
+	color: rgba(234, 241, 243, 0.78);
+	text-indent: 2em;
+}
+
+/* 窄窗口时上下排列 */
+@media screen and (max-width: 820px) {
+	body { overflow: auto; }
+	.main { flex-direction: column; padding: 18px; }
+	.photo { flex: none; height: 46vh; }
+	.text { flex: none; margin: 18px 0 0 0; overflow: visible; }
+	.nav a { margin: 6px 0 0 8px; padding: 7px 14px; font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ 上边栏 ============ -->
+<header class="topbar">
+	<div class="brand">奶手<span>HAND</span></div>
+	<nav class="nav">
+		<a class="primary" href="Choose.html">继续观察</a>
+		<a href="MyWeb.html">返回首页</a>
+		<a href="family.html">奶家族谱</a>
+		<a href="#">观测图鉴</a>
+		<a href="#">关于奶眼</a>
+	</nav>
+</header>
+
+<!-- ============ 左图 + 右文 ============ -->
+<div class="main">
+
+	<!-- 左边栏：奶手特写 -->
+	<div class="photo">
+		<img src="../image/naiyan-hand.jpg" alt="奶手">
+		<span class="tag">奶手 · HAND</span>
+	</div>
+
+	<!-- 右边栏：文字区（下面这些文字都换成你自己的） -->
+	<div class="text">
+		<h1>奶手</h1>
+		<p class="sub">NAIYAN HAND / OBSERVATION RECORD</p>
+		<p class="lead"><strong><em>贾维斯帮我开启绷住模式。</em></strong></p>
+		<p>奶手，战力不详。十分灵活，可以随意做出高难度动作。当奶蛙平静站立或者大笑的时候，奶手常常搭在奶肚上。因此，把奶手搭在奶肚上被认为是这种生物的常见待机形态。</p>
+		<p>当奶蛙切换攻击模式的时候，奶手呈现上掌下拳的姿态，常常和大笑组成一套小连招，使旁人进入绷住状态。如果无法绷住，就会被同化为大笑形态，恐怖如斯。</p>
+		<p>奶蛙切换愤怒模式的时候，奶手背在身后，如同箭在弦上，准备打出小连招。奶蛙切换温柔模式的时候，奶手搭在下巴上，尽显极致温柔，勾人心魄。</p>
+	</div>
+
+</div>
+
+
+</body>
+</html>
