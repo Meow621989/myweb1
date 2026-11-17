@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>观测选择</title>
+<style type="text/css">
+html, body {
+	height: 100%;
+	margin: 0;
+	background-color: #000000;
+	overflow: hidden;
+}
+/* 用一块和底图等比(3:2)的"照片框"铺满窗口，效果等同 background-size: cover，
+   但这样按钮可以用百分比精确锚定在图片的某个位置上 */
+.photo {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 100vw;              /* 老浏览器兜底 */
+	height: 100vh;
+	width: max(100vw, 150vh);   /* 3:2 图片按 cover 铺满后的真实宽度 */
+	height: max(100vh, 66.6667vw);
+	transform: translate(-50%, -50%);
+	background-image: url(image/2c89ad521bbb8886c24dc8a2175e71f545242769.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+}
+/* 图片上的小圆按钮：半透明白底、正圆、小尺寸 */
+.badge {
+	position: absolute;
+	left: 41.9%;    /* 默认位置：奶眼（两眼左前方） */
+	top: 41.4%;
+	width: 44px;
+	height: 44px;
+	margin: -22px 0 0 -22px;  /* 让圆心对准上面的坐标 */
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: 50%;      /* 正圆 */
+	background-color: rgba(255, 255, 255, 0.62);
+	color: #333333;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 12px;
+	line-height: 1;
+	letter-spacing: 1px;
+	text-decoration: none;   /* 作为超链接时不带下划线 */
+	cursor: pointer;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); /* 阴影：压在浅色肚子上也能看出圆边 */
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
+	transition: background-color 0.25s ease;
+}
+.badge:hover {
+	background-color: rgba(255, 255, 255, 0.85);
+}
+/* 下面三个只改坐标，样式完全同上 */
+/* 顶部右上角入口按钮 */
+.toplink {
+	position: fixed;   /* 固定在视口右上角 */
+	z-index: 10;
+	top: 24px;
+	right: 28px;
+	padding: 10px 24px;
+	border-radius: 999px;
+	background-color: rgba(255, 255, 255, 0.62);
+	color: #333333;
+	font-size: 14px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+	-webkit-backdrop-filter: blur(1px);
+	backdrop-filter: blur(1px);
+	transition: background-color 0.25s ease;
+}
+.toplink:hover {
+	background-color: rgba(255, 255, 255, 0.85);
+}
+.badge.belly {   /* 奶肚：肚子（白肚皮）上 */
+	left: 51.4%;
+	top: 48.3%;
+}
+.badge.hand {    /* 奶手：左手旁边 */
+	left: 44.1%;
+	top: 57.6%;
+}
+.badge.foot {    /* 奶脚：右脚脚趾下方 */
+	left: 60.0%;
+	top: 66.0%;
+}
+</style>
+</head>
+
+<body>
+<a class="toplink" href="family.html">奶家族谱</a>
+<div class="photo">
+	<a class="badge" href="eye.html">奶眼</a>
+	<a class="badge belly" href="belly.html">奶肚</a>
+	<a class="badge hand" href="hand.html">奶手</a>
+	<a class="badge foot" href="foot.html">奶脚</a>
+</div>
+</body>
+</html>

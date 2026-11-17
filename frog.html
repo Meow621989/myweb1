@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>奶蛙</title>
+<style type="text/css">
+html, body {
+	height: 100%;
+	margin: 0;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: #0a1418;
+	background-image: radial-gradient(circle at 50% -20%, #1d3a44 0%, #0a1418 55%);
+	color: #eaf1f3;
+	font-family: "Microsoft YaHei", "微软雅黑", "PingFang SC", Arial, sans-serif;
+	overflow: hidden;
+}
+
+/* ================= 上边栏 ================= */
+.topbar {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 30px;
+	background-color: rgba(8, 18, 23, 0.72);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.brand {
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 24px;
+	letter-spacing: 6px;
+	color: #f2f7f8;
+}
+.brand span {
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	letter-spacing: 3px;
+	color: rgba(234, 241, 243, 0.45);
+	margin-left: 10px;
+}
+.nav a {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 9px 22px;
+	border-radius: 999px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background-color: rgba(255, 255, 255, 0.10);
+	color: #eaf1f3;
+	font-size: 14px;
+	text-decoration: none;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+.nav a:hover {
+	background-color: rgba(255, 255, 255, 0.24);
+	border-color: rgba(255, 255, 255, 0.4);
+}
+.nav a.primary {
+	background-color: rgba(255, 255, 255, 0.66);
+	border-color: rgba(255, 255, 255, 0.66);
+	color: #16303a;
+	font-weight: bold;
+}
+.nav a.primary:hover {
+	background-color: rgba(255, 255, 255, 0.88);
+}
+
+/* ================= 主体：左图右文 ================= */
+.main {
+	flex: 1;
+	display: flex;
+	min-height: 0;
+	padding: 28px 30px 30px 30px;
+	box-sizing: border-box;
+}
+
+/* 左边栏：图片 */
+.photo {
+	flex: 0 0 42%;
+	position: relative;
+	overflow: hidden;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	background-color: #0e1c22;
+	min-width: 0;
+}
+.photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;      /* 照片裁切铺满，不拉伸变形 */
+	object-position: 50% 50%; /* 特写图已裁好，居中显示 */
+}
+.photo .tag {
+	position: absolute;
+	left: 18px;
+	bottom: 16px;
+	padding: 6px 14px;
+	border-radius: 999px;
+	background-color: rgba(255, 255, 255, 0.62);
+	color: #16303a;
+	font-size: 12px;
+	letter-spacing: 2px;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+/* 右边栏：文字区 */
+.text {
+	flex: 1;
+	min-width: 0;
+	margin-left: 26px;
+	padding: 30px 34px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.text h1 {
+	margin: 0 0 6px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 26px;
+	font-weight: normal;
+	letter-spacing: 4px;
+	color: #ffffff;
+}
+.text .sub {
+	margin: 0 0 24px 0;
+	font-size: 12px;
+	letter-spacing: 2px;
+	color: rgba(234, 241, 243, 0.45);
+}
+.text h2 {
+	margin: 26px 0 10px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 17px;
+	font-weight: normal;
+	letter-spacing: 2px;
+	color: #cfe2e7;
+	padding-left: 12px;
+	border-left: 3px solid rgba(255, 255, 255, 0.45);
+}
+.text .lead {
+	margin: 0 0 22px 0;
+	font-family: "Songti SC", "宋体", "SimSun", serif;
+	font-size: 19px;
+	font-weight: bold;
+	font-style: italic;
+	letter-spacing: 3px;
+	line-height: 1.9;
+	color: #ffffff;
+	text-indent: 0;
+	padding-left: 14px;
+	border-left: 3px solid rgba(255, 255, 255, 0.5);
+}
+.text .ha-wall {
+	margin: 0;
+	text-indent: 0;
+	font-size: 16px;
+	line-height: 2.2;
+	letter-spacing: 2px;
+	color: rgba(234, 241, 243, 0.72);
+	word-break: break-all;
+}
+.text p {
+	margin: 0 0 14px 0;
+	font-size: 14px;
+	line-height: 2;
+	color: rgba(234, 241, 243, 0.78);
+	text-indent: 2em;
+}
+
+/* 窄窗口时上下排列 */
+@media screen and (max-width: 820px) {
+	body { overflow: auto; }
+	.main { flex-direction: column; padding: 18px; }
+	.photo { flex: none; height: 46vh; }
+	.text { flex: none; margin: 18px 0 0 0; overflow: visible; }
+	.nav a { margin: 6px 0 0 8px; padding: 7px 14px; font-size: 13px; }
+}
+
+/* 导航里的音频开关（原「关于奶眼」占位按钮） */
+.nav a.audio-btn.playing {
+	background-color: rgba(255, 255, 255, 0.30);
+	border-color: rgba(255, 255, 255, 0.60);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============ 上边栏 ============ -->
+<header class="topbar">
+	<div class="brand">奶蛙<span>FROG</span></div>
+	<nav class="nav">
+		<a class="primary" href="Choose.html">继续观察</a>
+		<a href="index.html">返回首页</a>
+		<a href="family.html">奶家族谱</a>
+		<a href="#">观测图鉴</a>
+		<a href="#" class="audio-btn" id="audioBtn" onclick="return toggleAudio();">播放音频</a>
+	</nav>
+</header>
+
+<!-- ============ 左图 + 右文 ============ -->
+<div class="main">
+
+	<!-- 左边栏：奶蛙图片 -->
+	<div class="photo">
+		<img src="image/naiyan-frog.png" alt="奶蛙">
+		<span class="tag">奶蛙 · FROG</span>
+	</div>
+
+	<!-- 右边栏：文字区（下面这些文字都换成你自己的） -->
+	<div class="text">
+		<h1>奶蛙</h1>
+		<p class="sub">NAIYAN FROG / OBSERVATION RECORD</p>
+		<p class="lead"><strong><em>?!嘎嘎滴辣虾?!</em></strong></p>
+		<div class="ha-wall">
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+		</div>
+	</div>
+
+</div>
+
+
+<!-- ============ 背景音频 ============ -->
+<audio id="bgm" src="audio/bgm.mp3" loop preload="auto"></audio>
+<script type="text/javascript">
+(function () {
+	var audio = document.getElementById('bgm');
+	var btn = document.getElementById('audioBtn');
+	var KEY_ON = 'bgm', KEY_TIME = 'bgmTime';
+
+	function get(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
+	function set(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
+
+	function syncLabel() {
+		btn.textContent = audio.paused ? '播放音频' : '暂停音频';
+		btn.className = audio.paused ? 'audio-btn' : 'audio-btn playing';
+	}
+
+	function saveTime() {
+		if (audio.currentTime > 0) { set(KEY_TIME, audio.currentTime.toFixed(2)); }
+	}
+
+	// ---- 断点续播：接着上次的位置放，而不是从头 ----
+	var saved = parseFloat(get(KEY_TIME) || '0');
+	if (!isFinite(saved) || saved < 0) { saved = 0; }
+	function seekToSaved() {
+		try {
+			var dur = audio.duration;
+			if (saved > 0 && (isNaN(dur) || saved < dur - 0.2)) { audio.currentTime = saved; }
+		} catch (e) {}
+	}
+	if (audio.readyState >= 1) { seekToSaved(); }
+	else { audio.addEventListener('loadedmetadata', seekToSaved); }
+
+	// 播放中每秒记一次位置；离开页面时再记一次
+	var lastSave = 0;
+	audio.addEventListener('timeupdate', function () {
+		var now = Date.now();
+		if (now - lastSave > 1000) { lastSave = now; saveTime(); }
+	});
+	window.addEventListener('pagehide', saveTime);
+	window.addEventListener('beforeunload', saveTime);
+
+	window.toggleAudio = function () {
+		if (audio.paused) {
+			set(KEY_ON, 'on');
+			var p = audio.play();
+			if (p && p.catch) { p.catch(function () { syncLabel(); }); }
+		} else {
+			set(KEY_ON, 'off');
+			saveTime();
+			audio.pause();
+		}
+		return false;   // 阻止 <a href="#"> 跳回页首
+	};
+
+	audio.addEventListener('play', function () { syncLabel(); set(KEY_ON, 'on'); });
+	audio.addEventListener('pause', function () { syncLabel(); });
+
+	// 进入页面先试着自动播放；被浏览器拦下就保持「播放音频」，等用户点一下
+	if (get(KEY_ON) !== 'off') {
+		try {
+			var p2 = audio.play();
+			if (p2 && p2.catch) { p2.catch(function () { syncLabel(); }); }
+		} catch (e) {}
+	}
+
+	syncLabel();
+})();
+</script>
+</body>
+</html>
